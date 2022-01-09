@@ -13,11 +13,12 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::post('login', 'Api\AuthController@login');
-Route::post('register', 'Api\AuthController@register');
-Route::get('refresh', 'Api\AuthController@refresh');
-Route::group(['middleware' => ['jwt.auth']], function () {
-    Route::post('logout', 'Api\AuthController@logout');
-    Route::get('me', 'Api\AuthController@me');
+Route::middleware(['cors'])->group(function () {
+  Route::post('login', 'Api\AuthController@login');
+  Route::post('register', 'Api\AuthController@register');
+  Route::get('refresh', 'Api\AuthController@refresh');
+  Route::group(['middleware' => ['jwt.auth']], function () {
+      Route::post('logout', 'Api\AuthController@logout');
+      Route::get('me', 'Api\AuthController@me');
+  });
 });
