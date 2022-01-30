@@ -1,12 +1,13 @@
 import React from "react";
-import axios from 'axios';
+import LoginForm from "../../molecules/LoginForm";
 
-function loginPage() {
-  async function login() {
-    const response = await axios.post('http://localhost/api/login');
-    console.log(response)
+class LoginPage extends React.Component {
+  render(){
+    return (
+      <LoginForm>
+      </LoginForm>
+    )
   }
-  login()
 }
 
-export default loginPage;
+export default LoginPage;
